@@ -1,4 +1,4 @@
-/* Targeted Mobile Responsiveness Fixes - Based on Actual Mobile View Issues */
+/* Comprehensive Mobile Responsiveness Fixes - Based on Actual Mobile View Issues */
 
 /* Force mobile viewport behavior */
 @viewport {
@@ -27,36 +27,48 @@
   .container, [class*="container"] {
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
     margin: 0 !important;
   }
   
-  /* CRITICAL FIX: Navigation tabs layout to prevent overlapping */
-  /* Target the navigation tabs container */
-  div[class*="flex"][class*="gap"] {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-template-rows: repeat(3, 1fr) !important;
-    gap: 6px !important;
+  /* CRITICAL FIX: Navigation tabs - Make scrollable horizontally to prevent overlapping */
+  .flex.gap-1.mb-6 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
     width: 100% !important;
     margin-bottom: 16px !important;
-    padding: 0 !important;
+    padding: 8px 4px 12px 4px !important;
+    scroll-behavior: smooth !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE/Edge */
+    position: relative !important;
   }
   
-  /* Navigation tab buttons - prevent text cutoff and overlapping */
-  div[class*="flex"][class*="gap"] button {
-    padding: 8px 4px !important;
-    font-size: 10px !important;
+  /* Hide scrollbar for webkit browsers */
+  .flex.gap-1.mb-6::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  /* Navigation tab buttons - prevent text cutoff and ensure proper sizing */
+  .flex.gap-1.mb-6 button {
+    flex: 0 0 auto !important; /* Don't shrink, don't grow, auto width */
+    min-width: 90px !important;
+    max-width: 140px !important;
+    padding: 10px 14px !important;
+    font-size: 12px !important;
     font-weight: 500 !important;
     text-align: center !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    border-radius: 4px !important;
-    min-height: 36px !important;
-    max-height: 36px !important;
-    width: 100% !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    border-radius: 8px !important;
+    height: 40px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -64,16 +76,33 @@
     background: rgba(255, 255, 255, 0.05) !important;
     color: rgba(255, 255, 255, 0.8) !important;
     transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    position: relative !important;
   }
   
   /* Active/selected tab styling */
-  div[class*="flex"][class*="gap"] button[aria-selected="true"],
-  div[class*="flex"][class*="gap"] button.active,
-  div[class*="flex"][class*="gap"] button:focus {
+  .flex.gap-1.mb-6 button[aria-selected="true"],
+  .flex.gap-1.mb-6 button.active,
+  .flex.gap-1.mb-6 button:focus {
     background: rgba(59, 130, 246, 0.3) !important;
     border-color: rgba(59, 130, 246, 0.5) !important;
     color: #ffffff !important;
     font-weight: 600 !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2) !important;
+  }
+  
+  /* Add scroll indicator gradient */
+  .flex.gap-1.mb-6::after {
+    content: '' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 8px !important;
+    bottom: 12px !important;
+    width: 20px !important;
+    background: linear-gradient(to right, transparent, rgba(26, 26, 46, 0.8)) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
   }
   
   /* Header section improvements */
@@ -85,48 +114,52 @@
   }
   
   /* Page title */
-  h1, .text-3xl {
-    font-size: 20px !important;
+  h1, .text-3xl, .text-2xl {
+    font-size: 18px !important;
     line-height: 1.2 !important;
-    text-align: center !important;
+    text-align: left !important;
     margin-bottom: 8px !important;
+    padding: 0 4px !important;
   }
   
   /* Header buttons container */
   .flex.items-center.gap-2 {
     flex-direction: row !important;
     flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 8px !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
     width: 100% !important;
   }
   
   /* Header buttons */
   .flex.items-center.gap-2 button {
-    flex: 1 1 calc(33.333% - 6px) !important;
-    min-width: 80px !important;
-    max-width: 120px !important;
-    padding: 10px 6px !important;
-    font-size: 11px !important;
-    min-height: 40px !important;
-    border-radius: 6px !important;
+    flex: 1 1 calc(33.333% - 4px) !important;
+    min-width: 70px !important;
+    max-width: 100px !important;
+    padding: 8px 4px !important;
+    font-size: 10px !important;
+    min-height: 36px !important;
+    border-radius: 4px !important;
     text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   
   /* Analytics cards - single column layout */
   .grid.grid-cols-4 {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 12px !important;
-    margin-bottom: 24px !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
   }
   
   /* Individual analytics cards */
   .bg-card {
-    padding: 16px 12px !important;
-    border-radius: 8px !important;
+    padding: 12px 8px !important;
+    border-radius: 6px !important;
     text-align: center !important;
-    min-height: 100px !important;
+    min-height: 80px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -134,46 +167,132 @@
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
   
+  /* Analytics card text */
+  .bg-card h3, .bg-card .text-2xl {
+    font-size: 24px !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .bg-card p, .bg-card .text-sm {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+  
   /* CRITICAL FIX: Generate tracking link section */
   .bg-card.space-y-4 {
-    padding: 16px 12px !important;
-    margin-top: 24px !important;
+    padding: 12px 8px !important;
+    margin-top: 16px !important;
   }
   
   /* Input fields container - stack vertically */
   .flex.gap-4 {
     display: flex !important;
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 8px !important;
     width: 100% !important;
   }
   
   /* Input fields - full width and proper sizing */
   .flex.gap-4 input {
     width: 100% !important;
-    padding: 14px 16px !important;
+    padding: 12px 14px !important;
     font-size: 16px !important; /* Prevent iOS zoom */
     border-radius: 6px !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     background: rgba(255, 255, 255, 0.05) !important;
     color: white !important;
-    min-height: 48px !important;
+    min-height: 44px !important;
     box-sizing: border-box !important;
   }
   
   /* Generate button - ensure visibility and proper sizing */
   button[class*="bg-primary"], 
-  button:contains("Generate") {
+  button:has-text("Generate") {
     width: 100% !important;
-    padding: 14px 20px !important;
+    padding: 12px 16px !important;
     font-size: 14px !important;
     font-weight: 600 !important;
     border-radius: 6px !important;
-    min-height: 48px !important;
-    margin-top: 12px !important;
+    min-height: 44px !important;
+    margin-top: 8px !important;
     background: #3b82f6 !important;
     color: white !important;
     border: none !important;
+  }
+  
+  /* CRITICAL FIX: Live Activity section improvements */
+  .space-y-4 > div:first-child {
+    margin-bottom: 12px !important;
+  }
+  
+  /* Auto-refresh toggle container - proper mobile layout */
+  .flex.items-center.justify-between {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 8px 12px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 6px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Auto-refresh toggle - proper sizing */
+  .flex.items-center.gap-2 {
+    gap: 8px !important;
+  }
+  
+  /* Auto-refresh checkbox - proper mobile sizing */
+  input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    accent-color: #3b82f6 !important;
+    cursor: pointer !important;
+  }
+  
+  /* Auto-refresh label */
+  label {
+    font-size: 12px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    cursor: pointer !important;
+  }
+  
+  /* Refresh button in live activity */
+  .flex.items-center.justify-between button {
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    min-height: 32px !important;
+    border-radius: 4px !important;
+  }
+  
+  /* Search and filter controls container */
+  .flex.gap-4.mb-4 {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Search input field */
+  input[placeholder*="Search"] {
+    width: 100% !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    min-height: 40px !important;
+  }
+  
+  /* Select dropdowns */
+  select {
+    width: 100% !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    min-height: 40px !important;
   }
   
   /* CRITICAL FIX: Table responsiveness for live activity */
@@ -183,14 +302,16 @@
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
     margin-bottom: 16px !important;
+    border-radius: 6px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
   }
   
   /* Table styling for better mobile grouping */
   table {
     width: 100% !important;
-    min-width: 600px !important; /* Ensure table doesn't collapse too much */
+    min-width: 500px !important; /* Ensure table doesn't collapse too much */
     border-collapse: separate !important;
-    border-spacing: 0 4px !important;
+    border-spacing: 0 2px !important;
   }
   
   /* Table headers */
@@ -205,75 +326,107 @@
     position: sticky !important;
     top: 0 !important;
     z-index: 10 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
   }
   
   /* Table rows - grouped appearance */
   tr {
     background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 6px !important;
-    margin-bottom: 4px !important;
+    border-radius: 4px !important;
+    margin-bottom: 2px !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
   
   /* Table cells - compact but readable */
   td {
-    padding: 8px 6px !important;
-    font-size: 10px !important;
-    line-height: 1.3 !important;
+    padding: 6px 4px !important;
+    font-size: 9px !important;
+    line-height: 1.2 !important;
     border: none !important;
     vertical-align: middle !important;
     word-break: break-word !important;
-    max-width: 80px !important;
+    max-width: 60px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
   }
   
   /* First and last cell styling */
   td:first-child {
-    border-top-left-radius: 6px !important;
-    border-bottom-left-radius: 6px !important;
-    padding-left: 8px !important;
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    padding-left: 6px !important;
   }
   
   td:last-child {
-    border-top-right-radius: 6px !important;
-    border-bottom-right-radius: 6px !important;
-    padding-right: 8px !important;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+    padding-right: 6px !important;
   }
   
-  /* Search and filter controls */
-  input[placeholder*="Search"] {
-    width: 100% !important;
-    padding: 12px 14px !important;
-    font-size: 14px !important;
-    border-radius: 6px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: white !important;
-    margin-bottom: 12px !important;
+  /* Tracking ID styling */
+  td:nth-child(2) {
+    font-family: monospace !important;
+    font-weight: 600 !important;
+    color: #60a5fa !important;
+    font-size: 8px !important;
   }
   
-  /* Select dropdowns */
-  select {
-    width: 100% !important;
-    padding: 12px 14px !important;
-    font-size: 14px !important;
-    border-radius: 6px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: white !important;
-    margin-bottom: 12px !important;
+  /* Status indicators */
+  .status-active, .status-processed {
+    background: rgba(34, 197, 94, 0.2) !important;
+    color: #22c55e !important;
+    padding: 2px 4px !important;
+    border-radius: 2px !important;
+    font-size: 8px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+  }
+  
+  .status-blocked {
+    background: rgba(239, 68, 68, 0.2) !important;
+    color: #ef4444 !important;
+    padding: 2px 4px !important;
+    border-radius: 2px !important;
+    font-size: 8px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+  }
+  
+  /* Country flags */
+  .country-flag {
+    font-size: 12px !important;
+    margin-right: 4px !important;
+  }
+  
+  /* Device info */
+  .device-info {
+    font-size: 8px !important;
+    color: #a78bfa !important;
+  }
+  
+  /* Timestamp */
+  .timestamp {
+    font-size: 8px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-family: monospace !important;
   }
   
   /* Ensure all interactive elements meet touch target requirements */
   button, input, select, textarea, a {
     min-height: 44px !important;
-    min-width: 44px !important;
     touch-action: manipulation !important;
   }
   
-  /* Exception for very small buttons */
-  button[class*="size-"] {
+  /* Exception for small buttons */
+  button[class*="size-"], .btn-sm {
     min-height: 36px !important;
-    min-width: 36px !important;
+  }
+  
+  /* Exception for table action buttons */
+  table button {
+    min-height: 28px !important;
+    min-width: 28px !important;
+    padding: 4px !important;
+    font-size: 8px !important;
   }
 }
 
@@ -282,56 +435,83 @@
   
   /* Even more compact layout */
   .container, [class*="container"] {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
   }
   
-  /* Navigation tabs - keep 2x3 grid but smaller */
+  /* Navigation tabs - smaller sizing */
+  .flex.gap-1.mb-6 button,
   div[class*="flex"][class*="gap"] button {
-    font-size: 9px !important;
-    padding: 6px 3px !important;
-    min-height: 32px !important;
-    max-height: 32px !important;
+    min-width: 70px !important;
+    max-width: 100px !important;
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+    height: 32px !important;
   }
   
   /* Smaller analytics cards */
   .bg-card {
-    padding: 12px 8px !important;
-    min-height: 80px !important;
+    padding: 10px 6px !important;
+    min-height: 70px !important;
+  }
+  
+  .bg-card h3, .bg-card .text-2xl {
+    font-size: 20px !important;
+  }
+  
+  .bg-card p, .bg-card .text-sm {
+    font-size: 10px !important;
   }
   
   /* Smaller input fields */
   .flex.gap-4 input {
-    padding: 12px 14px !important;
-    min-height: 44px !important;
+    padding: 10px 12px !important;
+    min-height: 40px !important;
+    font-size: 14px !important;
   }
   
   /* Smaller generate button */
   button[class*="bg-primary"] {
-    padding: 12px 16px !important;
-    min-height: 44px !important;
+    padding: 10px 14px !important;
+    min-height: 40px !important;
+    font-size: 13px !important;
   }
   
   /* More compact table */
   td {
-    padding: 6px 4px !important;
-    font-size: 9px !important;
-    max-width: 60px !important;
+    padding: 4px 3px !important;
+    font-size: 8px !important;
+    max-width: 50px !important;
   }
   
   th {
-    padding: 6px 4px !important;
+    padding: 6px 3px !important;
     font-size: 9px !important;
+  }
+  
+  /* Smaller search input */
+  input[placeholder*="Search"] {
+    padding: 8px 10px !important;
+    min-height: 36px !important;
+    font-size: 13px !important;
+  }
+  
+  /* Smaller select */
+  select {
+    padding: 8px 10px !important;
+    min-height: 36px !important;
+    font-size: 13px !important;
   }
 }
 
 /* Landscape orientation adjustments */
 @media screen and (max-width: 768px) and (orientation: landscape) {
   
-  /* Navigation tabs in landscape - 3x2 grid */
-  div[class*="flex"][class*="gap"] {
-    grid-template-columns: repeat(3, 1fr) !important;
-    grid-template-rows: repeat(2, 1fr) !important;
+  /* Navigation tabs in landscape - keep scrollable but allow more space */
+  .flex.gap-1.mb-6 button,
+  div[class*="flex"][class*="gap"] button {
+    min-width: 90px !important;
+    max-width: 140px !important;
   }
   
   /* Analytics cards in landscape - 2 columns */
@@ -381,6 +561,19 @@
   button:active {
     transform: scale(0.98) !important;
     transition: transform 0.1s ease !important;
+  }
+  
+  /* Navigation scroll indicator */
+  .flex.gap-1.mb-6::after,
+  div[class*="flex"][class*="gap"]::after {
+    content: '' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 20px !important;
+    background: linear-gradient(to right, transparent, rgba(26, 26, 46, 0.8)) !important;
+    pointer-events: none !important;
   }
   
   /* Reduce motion for accessibility */
