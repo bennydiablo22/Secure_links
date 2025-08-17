@@ -1,4 +1,5 @@
 /* Professional Mobile Responsiveness Fixes for Secure Links Application */
+/* Based on advanced responsive design research and best practices */
 
 /* Reset and base mobile styles */
 @media screen and (max-width: 768px) {
@@ -7,27 +8,33 @@
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box !important;
   }
   
   /* Main container adjustments */
   .container {
     max-width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
     margin: 0 auto !important;
   }
   
-  /* Header section improvements */
+  /* Header section improvements - CRITICAL FIX */
   .flex.items-center.justify-between {
+    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     gap: 16px !important;
-    padding: 12px 0 !important;
+    padding: 16px 0 !important;
   }
   
   /* Page title styling */
   .text-3xl.font-bold {
-    font-size: 24px !important;
+    font-size: clamp(20px, 5vw, 28px) !important;
     line-height: 1.2 !important;
     text-align: center !important;
     margin-bottom: 8px !important;
@@ -35,239 +42,297 @@
   
   /* Last updated text */
   .text-sm.text-muted-foreground {
-    font-size: 12px !important;
+    font-size: clamp(12px, 3vw, 14px) !important;
     text-align: center !important;
     margin-bottom: 16px !important;
   }
   
-  /* Header buttons container */
+  /* Header buttons container - CRITICAL FIX */
   .flex.items-center.gap-2 {
+    display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 12px !important;
     width: 100% !important;
   }
   
-  /* Header buttons styling */
+  /* Header buttons styling - CRITICAL FIX */
   .flex.items-center.gap-2 button {
-    flex: 1 1 calc(50% - 4px) !important;
-    min-width: 120px !important;
-    max-width: 160px !important;
-    padding: 10px 12px !important;
+    flex: 1 1 calc(33.333% - 8px) !important;
+    min-width: 100px !important;
+    max-width: 140px !important;
+    padding: 12px 8px !important;
     font-size: 13px !important;
     white-space: nowrap !important;
+    min-height: 44px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
   }
   
   /* Navigation tabs container - MAJOR FIX */
   .flex.gap-1.mb-6 {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 6px !important;
-    margin-bottom: 20px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 24px !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
   
   /* Navigation tab buttons - PROFESSIONAL STYLING */
   .flex.gap-1.mb-6 button {
-    padding: 8px 4px !important;
-    font-size: 11px !important;
+    padding: 12px 8px !important;
+    font-size: 12px !important;
     font-weight: 500 !important;
     text-align: center !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    border-radius: 6px !important;
-    min-height: 36px !important;
+    border-radius: 8px !important;
+    min-height: 44px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   
   /* Analytics cards grid - COMPLETE REDESIGN */
   .grid.grid-cols-4.gap-6 {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    margin-bottom: 24px !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 32px !important;
+    width: 100% !important;
   }
   
   /* Individual analytics cards */
   .bg-card.rounded-lg.p-6 {
-    padding: 16px 12px !important;
+    padding: 20px 16px !important;
     border-radius: 12px !important;
-    min-height: 100px !important;
+    min-height: 120px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     text-align: center !important;
+    width: 100% !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   
   /* Analytics card titles */
   .bg-card h3 {
-    font-size: 12px !important;
+    font-size: 14px !important;
     font-weight: 600 !important;
-    margin-bottom: 8px !important;
-    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.3 !important;
   }
   
   /* Analytics card numbers */
   .bg-card .text-2xl {
-    font-size: 24px !important;
+    font-size: clamp(24px, 6vw, 32px) !important;
     font-weight: 700 !important;
     line-height: 1 !important;
+    margin: 8px 0 !important;
   }
   
   /* Analytics card descriptions */
   .bg-card .text-sm {
-    font-size: 10px !important;
-    margin-top: 4px !important;
+    font-size: 12px !important;
+    margin-top: 8px !important;
     opacity: 0.8 !important;
   }
   
-  /* Generate New Tracking Link section */
+  /* Generate New Tracking Link section - CRITICAL FIX */
   .bg-card.rounded-lg.p-6.space-y-4 {
-    padding: 20px 16px !important;
+    padding: 24px 20px !important;
     border-radius: 12px !important;
-    margin-top: 24px !important;
+    margin-top: 32px !important;
+    width: 100% !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   
   /* Section title */
   .bg-card h2 {
-    font-size: 18px !important;
+    font-size: clamp(18px, 4vw, 22px) !important;
     font-weight: 600 !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 16px !important;
     text-align: center !important;
   }
   
   /* Section description */
   .bg-card p {
-    font-size: 13px !important;
-    line-height: 1.4 !important;
-    margin-bottom: 20px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 24px !important;
     text-align: center !important;
   }
   
-  /* Input fields container */
+  /* Input fields container - CRITICAL FIX */
   .flex.gap-4 {
     display: flex !important;
     flex-direction: column !important;
-    gap: 12px !important;
-    margin-bottom: 16px !important;
+    gap: 16px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
   }
   
-  /* Input fields styling */
+  /* Input fields styling - CRITICAL FIX */
   .flex.gap-4 input {
     width: 100% !important;
-    padding: 12px 16px !important;
-    font-size: 14px !important;
+    padding: 16px 20px !important;
+    font-size: 16px !important;
     border-radius: 8px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
     background: rgba(255, 255, 255, 0.05) !important;
     color: white !important;
-    min-height: 44px !important;
+    min-height: 56px !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
   }
   
   /* Input placeholder styling */
   .flex.gap-4 input::placeholder {
     color: rgba(255, 255, 255, 0.6) !important;
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
   
-  /* Generate Link button */
+  /* Input focus states */
+  .flex.gap-4 input:focus {
+    border-color: rgba(59, 130, 246, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+    outline: none !important;
+  }
+  
+  /* Generate Link button - CRITICAL FIX */
   .bg-primary {
     width: 100% !important;
-    padding: 14px 20px !important;
+    padding: 16px 24px !important;
     font-size: 16px !important;
     font-weight: 600 !important;
     border-radius: 8px !important;
-    margin-top: 8px !important;
-    min-height: 48px !important;
+    margin-top: 12px !important;
+    min-height: 56px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  /* Button hover and active states */
+  .bg-primary:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+  }
+  
+  .bg-primary:active {
+    transform: translateY(0) !important;
   }
   
   /* Theme toggle button */
   .fixed.top-4.right-4 {
     position: fixed !important;
-    top: 12px !important;
-    right: 12px !important;
+    top: 16px !important;
+    right: 16px !important;
     z-index: 1000 !important;
-    padding: 8px !important;
+    padding: 12px !important;
     border-radius: 8px !important;
+    min-height: 44px !important;
+    min-width: 44px !important;
   }
   
   /* Tracking links section improvements */
   .space-y-4 > * + * {
-    margin-top: 16px !important;
+    margin-top: 20px !important;
   }
   
   /* Individual tracking link cards */
   .bg-card.rounded-lg.p-4 {
-    padding: 16px !important;
+    padding: 20px !important;
     border-radius: 12px !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   
   /* Tracking link content layout */
   .bg-card .flex.items-center.justify-between {
+    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 12px !important;
+    gap: 16px !important;
   }
   
   /* Tracking link stats */
   .flex.items-center.gap-4 {
+    display: flex !important;
     flex-wrap: wrap !important;
-    gap: 8px !important;
+    gap: 12px !important;
     justify-content: center !important;
   }
   
   .flex.items-center.gap-1 {
     font-size: 12px !important;
-    padding: 4px 8px !important;
+    padding: 8px 12px !important;
     background: rgba(255, 255, 255, 0.1) !important;
     border-radius: 6px !important;
+    min-height: 32px !important;
   }
   
   /* URL display improvements */
   .text-sm.text-muted-foreground {
     word-break: break-all !important;
     overflow-wrap: break-word !important;
-    font-size: 11px !important;
-    line-height: 1.3 !important;
-    padding: 8px !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    padding: 12px !important;
     background: rgba(0, 0, 0, 0.2) !important;
-    border-radius: 6px !important;
-    margin: 8px 0 !important;
+    border-radius: 8px !important;
+    margin: 12px 0 !important;
   }
   
   /* Action buttons */
   .flex.items-center.gap-2 button {
-    padding: 8px 12px !important;
-    font-size: 12px !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
     border-radius: 6px !important;
-    min-height: 36px !important;
+    min-height: 44px !important;
+    min-width: 44px !important;
   }
   
   /* Ensure proper touch targets */
-  button, input, select, textarea {
+  button, input, select, textarea, a {
     min-height: 44px !important;
     min-width: 44px !important;
   }
   
   /* Exception for small icon buttons */
   button.size-8, button.size-9 {
-    min-height: 36px !important;
-    min-width: 36px !important;
+    min-height: 40px !important;
+    min-width: 40px !important;
   }
 }
 
 /* Extra small mobile devices (iPhone SE, etc.) */
 @media screen and (max-width: 480px) {
   
-  /* Navigation tabs - single column for very small screens */
+  /* Container padding for very small screens */
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  
+  /* Navigation tabs - 2x3 grid for very small screens */
   .flex.gap-1.mb-6 {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  
+  .flex.gap-1.mb-6 button {
+    font-size: 11px !important;
+    padding: 10px 6px !important;
+    min-height: 40px !important;
   }
   
   /* Analytics cards - single column */
@@ -277,49 +342,60 @@
   }
   
   /* Reduce padding for very small screens */
-  .container {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-  }
-  
   .bg-card.rounded-lg.p-6 {
-    padding: 12px !important;
+    padding: 16px 12px !important;
   }
   
   .bg-card.rounded-lg.p-6.space-y-4 {
-    padding: 16px 12px !important;
+    padding: 20px 16px !important;
   }
   
   /* Header buttons full width on very small screens */
   .flex.items-center.gap-2 button {
-    flex: 1 1 100% !important;
+    flex: 1 1 calc(50% - 6px) !important;
     max-width: none !important;
+    min-width: 80px !important;
+  }
+  
+  /* Smaller input fields for very small screens */
+  .flex.gap-4 input {
+    padding: 14px 16px !important;
+    font-size: 16px !important; /* Prevent zoom on iOS */
+    min-height: 52px !important;
+  }
+  
+  /* Smaller generate button */
+  .bg-primary {
+    padding: 14px 20px !important;
+    min-height: 52px !important;
   }
 }
 
 /* Landscape orientation adjustments */
 @media screen and (max-width: 768px) and (orientation: landscape) {
   
-  /* Navigation tabs in landscape */
+  /* Navigation tabs in landscape - 3x2 grid */
   .flex.gap-1.mb-6 {
-    grid-template-columns: repeat(6, 1fr) !important;
-    gap: 4px !important;
-  }
-  
-  .flex.gap-1.mb-6 button {
-    font-size: 10px !important;
-    padding: 6px 2px !important;
-  }
-  
-  /* Analytics cards in landscape */
-  .grid.grid-cols-4.gap-6 {
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
     gap: 8px !important;
   }
   
+  .flex.gap-1.mb-6 button {
+    font-size: 11px !important;
+    padding: 8px 4px !important;
+    min-height: 40px !important;
+  }
+  
+  /* Analytics cards in landscape - 2 columns */
+  .grid.grid-cols-4.gap-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  
   .bg-card.rounded-lg.p-6 {
-    padding: 12px 8px !important;
-    min-height: 80px !important;
+    padding: 16px 12px !important;
+    min-height: 100px !important;
   }
 }
 
@@ -330,19 +406,20 @@
   .bg-card {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
   }
   
-  /* Input focus states */
-  .flex.gap-4 input:focus {
-    border-color: rgba(59, 130, 246, 0.5) !important;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
-    outline: none !important;
+  /* Card hover effects */
+  .bg-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.2s ease !important;
   }
   
-  /* Button hover states */
-  button:hover {
-    transform: translateY(-1px) !important;
-    transition: transform 0.2s ease !important;
+  /* Button press effects */
+  button:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s ease !important;
   }
 }
 
@@ -354,15 +431,43 @@
     transition: all 0.2s ease !important;
   }
   
-  /* Card hover effects */
-  .bg-card:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
   }
+}
+
+/* High DPI display adjustments */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
   
-  /* Button press effects */
-  button:active {
-    transform: scale(0.98) !important;
+  /* Ensure crisp borders on high DPI displays */
+  .bg-card, button, input {
+    border-width: 0.5px !important;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  @media screen and (max-width: 768px) {
+    
+    /* Fix iOS Safari viewport issues */
+    body {
+      -webkit-text-size-adjust: 100% !important;
+    }
+    
+    /* Fix iOS input zoom */
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+    
+    /* Fix iOS button styling */
+    button {
+      -webkit-appearance: none !important;
+      border-radius: 8px !important;
+    }
   }
 }
 
